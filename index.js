@@ -16,10 +16,9 @@ btn.addEventListener('click', () => (p1.innerHTML = parValue));
 let butnArray = new Array(10);
 butnArray[0] = 'Dylan';
 butnArray[1] = undefined;
-butnArray[2] = 'Bloch';
+butnArray[2] = 'Groucho';
 butnArray[3] = undefined;
-butnArray[4] = 'Groucho';
-butnArray.forEach(creaPar);
+butnArray[4] = 'Bloch';
 
 function creaPar(value, index) {
   let vbtn = document.createElement('button');
@@ -30,5 +29,7 @@ function creaPar(value, index) {
     p1.innerHTML = this.value;
   });
 }
+butnArray.forEach(creaPar);
+
 const p1 = document.createElement('p');
 document.body.appendChild(p1);
