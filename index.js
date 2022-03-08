@@ -33,3 +33,5 @@ butnArray.forEach(creaPar);
 
 const p1 = document.createElement('p');
 document.body.appendChild(p1);
+
+//step 4
