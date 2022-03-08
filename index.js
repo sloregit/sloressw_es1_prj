@@ -9,3 +9,5 @@ const p1 = document.createElement('p');
 document.body.appendChild(p1);
 
 btn.addEventListener('click', () => (p1.innerHTML = parValue));
+
+//step 3
