@@ -17,7 +17,6 @@ butnArray[4] = 'Bloch';
 
 function addBtn(value, index) {
   let viewBtn = document.createElement('button');
-  console.log(typeof index);
   viewBtn.innerHTML = 'P' + (index + 1);
   viewBtn.value = value != undefined ? value : ''; // x sicurezza
   pBtn.appendChild(viewBtn);
