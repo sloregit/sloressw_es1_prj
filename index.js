@@ -1,27 +1,29 @@
 import './style.css';
-//rinominati p1,p2,btn : pBtn, pValue, viewBtn
+//rinominati pBtn, pValue, viewBtn : posti, nomi,
 //css non richiesto ma utile
 
 //step 3 array di 10 tasti, ognuno visualizza il proprio valore
 
-const pBtn = document.getElementById('pBtn');
-const pValue = document.getElementById('pValue');
+const parPosti = document.getElementById('parPosti');
+const parNomi = document.getElementById('parNomi');
 
-let butnArray = new Array(10);
-butnArray.fill(''); //evita undefined
-butnArray[0] = 'Dylan';
-butnArray[1] = undefined;
-butnArray[2] = 'Groucho';
-butnArray[3] = undefined;
-butnArray[4] = 'Bloch';
+let postiArray = new Array(10);
+postiArray.fill(''); //evita undefined
+postiArray[0] = 'Dylan';
+postiArray[1] = undefined;
+postiArray[2] = 'Groucho';
+postiArray[3] = undefined;
+postiArray[4] = 'Bloch';
 
 function addBtn(value, index) {
-  let viewBtn = document.createElement('button');
-  viewBtn.innerHTML = 'P' + (index + 1);
-  viewBtn.value = value != undefined ? value : ''; // x sicurezza
-  pBtn.appendChild(viewBtn);
-  viewBtn.addEventListener('click', function () {
-    pValue.innerHTML = this.value;
+  let showNome = document.createElement('button');
+  showNome.innerHTML = 'P' + (index + 1);
+  showNome.value = value != undefined ? value : ''; // x sicurezza
+  parPosti.appendChild(showNome);
+  showNome.addEventListener('click', function () {
+    parNomi.innerHTML = this.value;
   });
 }
-butnArray.forEach(addBtn);
+postiArray.forEach(addBtn);
+
+//step 4
