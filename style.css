@@ -2,7 +2,9 @@ h1,
 h2 {
   font-family: Lato;
 }
-#p1 {
-  border: 1px, 1px, 1px, 1px black;
-  background-color: red;
+#pValue {
+  border: 1px solid black;
+  /*dimensioni in pixel, da cambiare in futuro*/
+  height: 20px;
+  width: 200px;
 }
