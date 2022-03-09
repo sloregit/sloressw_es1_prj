@@ -8,7 +8,6 @@ const parPosti = document.getElementById('parPosti');
 const parNomi = document.getElementById('parNomi');
 
 let postiArray = new Array(10).fill('');
-const prenotazioni = new Array(postiArray.length);
 
 postiArray[0] = 'Dylan';
 postiArray[1] = undefined;
