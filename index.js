@@ -1,11 +1,10 @@
-//step 1 creazione del pulsante
+//step 0 creazione del pulsante con etichetta
 const btn = document.createElement('button');
 btn.innerHTML = 'P';
-document.body.appendChild(btn);
 
-//step 2 aggiunta di un paragrafo con valore visualizzato al click
-const parValue = 'paragrafo dinamico!';
-const p1 = document.createElement('p');
-document.body.appendChild(p1);
+//step 1 aggiunta di un paragrafo
+//const parValue = 'paragrafo dinamico!';
+const p1 = document.getElementById('p1');
+p1.appendChild(btn);
 
-btn.addEventListener('click', () => (p1.innerHTML = parValue));
+//btn.addEventListener('click', () => (p1.innerHTML = parValue));
