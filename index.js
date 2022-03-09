@@ -20,7 +20,7 @@ butnArray[2] = 'Groucho';
 butnArray[3] = undefined;
 butnArray[4] = 'Bloch';
 
-function creaPar(value, index) {
+function addBtn(value, index) {
   let vbtn = document.createElement('button');
   vbtn.innerHTML = 'P' + index;
   vbtn.value = value != undefined ? value : '';
@@ -29,7 +29,7 @@ function creaPar(value, index) {
     p1.innerHTML = this.value;
   });
 }
-butnArray.forEach(creaPar);
+butnArray.forEach(addBtn);
 
 const p1 = document.createElement('p');
 document.body.appendChild(p1);
