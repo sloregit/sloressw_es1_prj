@@ -2,7 +2,7 @@ import './style.css';
 //rinominati pBtn, pValue, viewBtn : parPosti, parNomi, showNome
 //css non richiesto ma utile
 
-//step 3 array di 10 tasti, ognuno visualizza il proprio valore
+//step 4 sostituito foreach con map
 
 const parPosti = document.getElementById('parPosti');
 const parNomi = document.getElementById('parNomi');
@@ -26,15 +26,3 @@ function addBtn(value, index) {
 }
 
 postiArray.map(addBtn);
-
-//postiArray.forEach(addBtn);
-
-//step 4
-/*
-let prenotazioni = new Array();
-prenotazioni = postiArray.map(creaB);
-
-function creaB(value, index) {
-  prenotazioni[index] = value;
-}
-*/
