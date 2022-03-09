@@ -32,6 +32,7 @@ function addBtn(value, index) {
 butnArray.forEach(addBtn);
 
 const p1 = document.createElement('p');
+p1.id = 'p1';
 document.body.appendChild(p1);
 
 //step 4
