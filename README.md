@@ -1,3 +1,5 @@
-Ora collegate una funzione callback al tasto. La funzione visualizza il valore di una variabile in un nuovo paragrafo, da aggiungere nell'HTML. Dovrete anche definire ed inizializzare (a piacere) la variabile di cui visualizzare il valore.
+Ora create un paragrafo nell'HTML con il tag
 
-Per associare il callback utilizzate un addEventListener, specificando l'evento di innesco ("clicK") e la funzione callback.
+e collocate il tasto al suo interno (non nel body).
+
+Per collocare il nuovo elemento usate una getElementById, con parametro il valore dell'attributo id che avrete associato all'elemento paragrafo. Applicate poi la appendChild a questa variabile.
