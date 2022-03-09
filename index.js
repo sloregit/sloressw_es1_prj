@@ -1,5 +1,5 @@
 import './style.css';
-//rinominati pBtn, pValue, viewBtn : posti, nomi,
+//rinominati pBtn, pValue, viewBtn : parPosti, parNomi, showNome
 //css non richiesto ma utile
 
 //step 3 array di 10 tasti, ognuno visualizza il proprio valore
