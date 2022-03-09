@@ -7,8 +7,9 @@ import './style.css';
 const parPosti = document.getElementById('parPosti');
 const parNomi = document.getElementById('parNomi');
 
-let postiArray = new Array(10);
-postiArray.fill(''); //evita undefined
+let postiArray = new Array(10).fill('');
+const prenotazioni = new Array(postiArray.length);
+
 postiArray[0] = 'Dylan';
 postiArray[1] = undefined;
 postiArray[2] = 'Groucho';
@@ -24,6 +25,17 @@ function addBtn(value, index) {
     parNomi.innerHTML = this.value;
   });
 }
-postiArray.forEach(addBtn);
+
+postiArray.map(addBtn);
+
+//postiArray.forEach(addBtn);
 
 //step 4
+/*
+let prenotazioni = new Array();
+prenotazioni = postiArray.map(creaB);
+
+function creaB(value, index) {
+  prenotazioni[index] = value;
+}
+*/

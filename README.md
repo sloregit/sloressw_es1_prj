@@ -1,5 +1,5 @@
-Create un array di alcune posizioni (10 indicativamente) ed associate il contenuto da ciascun elemento ad un tasto in modo che premendo il tasto compaia il valore (attr. "value) associato allo stesso
+Ora i valori nell'array di bottoni vengono caricati da un altro array di stringhe. Abbiamo quindi due array, uno di stringhe (posto), ed uno di bottoni (prenotazione) con la stessa dimensione.
 
-Per creare l'array senza necessariamente riempirlo potete usare new array(10) che crea un array di alori indefiniti di deci posizioni. Poi inizializzarne alcune per verificare il funzionamento del programma.
+Per inizializzare l'array di stringhe utilizziamo una fill() (https://www.w3schools.com/jsref/jsref_fill.asp)
 
-Nel callback associato al tasto, per recuperare il "value" associato usate this: nel callback questa corrisponde all'elemento su cui si è verificato l'evento (click) e quindi potete risalire al valore del suo attributo "value"
+Per caricare l'array di stringhe nell'array di bottoni utilizziamo una map(). La funzione definita nella map prende come parametri l'elemento iterato e il suo indice, per impostare il valore del bottone nella stessa posizione.
