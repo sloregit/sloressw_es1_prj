@@ -40,7 +40,7 @@ function assegnaPosto(prenotazione, fila, posto) {
       if (fila === 0) {
         fila = 1; //non esiste la fila 0
       }
-      if (posto == 0) {
+      if (posto === 0) {
         posto = 1; // non esiste la fila 1
       }
       if (fila > file.length) {
@@ -58,7 +58,7 @@ function assegnaPosto(prenotazione, fila, posto) {
         if (prenotazione[1] === 0) {
           prenotazione[1] = 1;
         }
-        if (prenotazione[2] == 0) {
+        if (prenotazione[2] === 0) {
           prenotazione[2] = 1;
         }
         if (prenotazione[1] > file.length) {
@@ -89,7 +89,7 @@ assegnaPosto('Wells', 4, 100);
 const nomiPrenotati = [
   ['Groucho', 1, 2],
   ['Bloch', 7, 45],
-  ['Xabaras', 3, 35],
+  ['Jenny', 3, 35],
 ];
 
 assegnaPosto(nomiPrenotati);
