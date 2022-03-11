@@ -8,3 +8,7 @@ h2 {
   height: 20px;
   width: 200px;
 }
+
+.posto:hover {
+  background-color: lightblue;
+}
