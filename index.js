@@ -26,11 +26,11 @@ function addBtn(value, index) {
 const file = new Array(10).fill('x');
 const platea = new Array(10).fill('x');
 
-function creaFile(fila, index) {
+function InsertFile(fila, index) {
   //index = this. nella callback
   return (platea[index] = file.map(addBtn, index));
 }
-platea.map(creaFile);
+platea.map(InsertFile);
 
 function assegnaPosto(prenotazione, fila, posto) {
   //assegna il valore al tasto/i e lo/li salva in platea
@@ -85,7 +85,7 @@ function assegnaPosto(prenotazione, fila, posto) {
 assegnaPosto('Dylan', 1, 1);
 
 assegnaPosto('Wells', 4, 100);
-//fila ancora inutilizzata
+//fila ancora inutilizzata, utilizzato solo il posto
 const nomiPrenotati = [
   ['Groucho', 1, 2],
   ['Bloch', 7, 45],
