@@ -9,6 +9,7 @@ const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('palchi');
 
 function addBtn(value, index) {
+  console.log(value);
   //creo il bottone e gli assegno una classe
   let showNome = document.createElement('button');
   showNome.className = 'posto';
@@ -24,32 +25,35 @@ function addBtn(value, index) {
   return showNome;
 }
 //creo gli array per le file e le inserisco nella platea
-const file = Array(10).fill('x');
-const platea = new Array(10).fill('x');
-const filePalco = new Array(6).fill('y');
+//const file = Array(10).fill('x');
+//const platea = new Array(10).fill('x');
 
+//////////////////////////////////////////////////////////
 const filePlatea = 10;
+const postiPlatea = 10;
+const filePalco = 4;
+const postiPalco = 6;
 
 const teatro = {
   platea: Array(filePlatea)
-    .fill('')
-    .map(() => {
-      Array(file).fill('x');
-    }),
-  palchi: Array(filePlatea)
-    .fill('')
-    .map(() => {
-      Array(file).fill('y');
-    }),
+    .fill('platea')
+    .map(() => Array(postiPlatea).fill('postoPlatea')),
+  palchi: Array(filePalco)
+    .fill('palco')
+    .map(() => Array(postiPalco).fill('postoPalco')),
+  insertFile: function () {
+    return this.platea.map(addBtn);
+  },
 };
 
 function InsertFile(fila, index) {
   //index = this. nella callback
   return (platea[index] = file.map(addBtn, index));
 }
-platea.map(InsertFile);
-palchi.map(InsertFile);
-console.log(palchi);
+//platea.map(InsertFile);
+
+teatro.insertFile();
+
 function assegnaPosto(prenotazione, fila, posto) {
   //assegna il valore al tasto/i e lo/li salva in platea
   try {
@@ -100,7 +104,7 @@ function assegnaPosto(prenotazione, fila, posto) {
 }
 
 //Per assegnare i posti, sia singolarmente che in gruppo
-assegnaPosto('Dylan', 1, 1);
+/*assegnaPosto('Dylan', 1, 1);
 
 assegnaPosto('Wells', 4, 100);
 //fila ancora inutilizzata, utilizzato solo il posto
@@ -111,3 +115,4 @@ const nomiPrenotati = [
 ];
 
 assegnaPosto(nomiPrenotati);
+*/
