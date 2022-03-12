@@ -21,6 +21,7 @@ function addBtn(value, index) {
   showNome.addEventListener('click', function () {
     parNomi.innerHTML = this.value;
   });
+  return showNome;
 }
 //creo gli array per le file e le inserisco nella platea
 const file = new Array(10).fill('x');
