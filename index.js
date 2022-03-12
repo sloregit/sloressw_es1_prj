@@ -9,20 +9,23 @@ const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('palchi');
 
 function addBtn(value, index) {
-  console.log(value);
-  //creo il bottone e gli assegno una classe
-  let showNome = document.createElement('button');
-  showNome.className = 'posto';
-  let aCapo = document.createElement('br');
-  //this(indice della platea) * 10 per avere il numero del posto
-  showNome.innerHTML = 'P' + (index + 1 + this * 10);
-  showNome.value = value != undefined ? value : ''; // x sicurezza
-  parPosti.appendChild(showNome);
-  index >= 9 ? parPosti.appendChild(aCapo) : ''; //fila di 10
-  showNome.addEventListener('click', function () {
-    parNomi.innerHTML = this.value;
+  value.map((nome, posto) => {
+    console.log(nome, posto,index);
+    //creo il bottone e gli assegno una classe
+    let showNome = document.createElement('button');
+    showNome.className = 'posto';
+    let aCapo = document.createElement('br');
+    //this(indice della platea) * 10 per avere il numero del posto
+    showNome.innerHTML = 'P' + ((posto+1) + 10*index);
+    showNome.value = value != undefined ? value : ''; // x sicurezza
+    parPosti.appendChild(showNome);
+    posto >= 9 ? parPosti.appendChild(aCapo) : ''; //fila di 10
+    showNome.addEventListener('click', function () {
+      parNomi.innerHTML = this.value;
+    });
   });
-  return showNome;
+
+  //return showNome;
 }
 //creo gli array per le file e le inserisco nella platea
 //const file = Array(10).fill('x');
