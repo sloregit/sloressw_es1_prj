@@ -39,9 +39,6 @@ const teatro = {
     return this.posizione;
   },
 };
-teatro.platea[0][2] = 'we';
-
-//platea.map(InsertFile);
 
 teatro.assegnaPosto('palco', 'Igor', 0, 5);
 teatro.creaPlatea();
