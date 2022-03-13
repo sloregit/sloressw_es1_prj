@@ -1,6 +1,6 @@
 import './style.css';
 //css non richiesto ma utile
-
+console.log('platea non restituisce un array di bottoni');
 //step 6
 //aggancio i paragrafi
 //meglio <div>?
