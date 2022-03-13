@@ -3,35 +3,12 @@ import './style.css';
 //css non richiesto ma utile
 
 //step 6
-//aggiungo i palchi
+//aggancio i paragrafi
+//meglio <div>?
 const parPosti = document.getElementById('parPosti');
 const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('palchi');
-
-function addBtn(value, index) {
-  value.map((nome, posto) => {
-    console.log(nome, posto,index);
-    //creo il bottone e gli assegno una classe
-    let showNome = document.createElement('button');
-    showNome.className = 'posto';
-    let aCapo = document.createElement('br');
-    //this(indice della platea) * 10 per avere il numero del posto
-    showNome.innerHTML = 'P' + ((posto+1) + 10*index);
-    showNome.value = value != undefined ? value : ''; // x sicurezza
-    parPosti.appendChild(showNome);
-    posto >= 9 ? parPosti.appendChild(aCapo) : ''; //fila di 10
-    showNome.addEventListener('click', function () {
-      parNomi.innerHTML = this.value;
-    });
-  });
-
-  //return showNome;
-}
-//creo gli array per le file e le inserisco nella platea
-//const file = Array(10).fill('x');
-//const platea = new Array(10).fill('x');
-
-//////////////////////////////////////////////////////////
+//dichiarazione file,posti platea/palco
 const filePlatea = 10;
 const postiPlatea = 10;
 const filePalco = 4;
@@ -41,22 +18,64 @@ const teatro = {
   platea: Array(filePlatea)
     .fill('platea')
     .map(() => Array(postiPlatea).fill('postoPlatea')),
-  palchi: Array(filePalco)
+  palco: Array(filePalco)
     .fill('palco')
     .map(() => Array(postiPalco).fill('postoPalco')),
-  insertFile: function () {
-    return this.platea.map(addBtn);
+  creaPlatea: function (spazio) {
+    return this.platea.map(addBtn, 'platea');
+  },
+  creaPalco: function () {
+    return this.palco.map(addBtn, 'palco');
+  },
+  assegnaPosto: function (posizione, nome, fila, posto) {
+    if (posizione === 'platea') {
+      this.platea[fila + 1][posto + 1] = nome;
+      console.log(this.platea);
+    }
+    if (posizione === 'palco') {
+      this.palco[fila][posto] = nome;
+      console.log(this.palco);
+    }
+    return this.posizione;
   },
 };
+teatro.platea[0][2] = 'we';
 
-function InsertFile(fila, index) {
-  //index = this. nella callback
-  return (platea[index] = file.map(addBtn, index));
-}
 //platea.map(InsertFile);
 
-teatro.insertFile();
+teatro.assegnaPosto('palco', 'Igor', 0, 5);
+teatro.creaPlatea();
+teatro.creaPalco();
 
+//inserisce i pulsanti in platea o palco
+function addBtn(value, index) {
+  value.map((nome, posto) => {
+    console.log(nome, posto, index);
+    //creo il bottone e gli assegno una classe
+    let showNome = document.createElement('button');
+    showNome.className = 'posto';
+    let aCapo = document.createElement('br');
+    //indice della platea/palco * 10 per avere il numero del posto
+    showNome.innerHTML = 'P' + (posto + 1);
+    if (this === 'platea') {
+      parPosti.appendChild(showNome);
+      showNome.className = 'postoPlatea';
+      posto + 1 >= value.length ? parPosti.appendChild(aCapo) : ''; //fila di 10
+    }
+    if (this === 'palco') {
+      parPalchi.appendChild(showNome);
+      showNome.className = 'postoPalco';
+      posto + 1 >= value.length ? parPalchi.appendChild(aCapo) : ''; //fila di 6
+    }
+    showNome.value = nome != undefined ? nome : ''; // x sicurezza
+    showNome.addEventListener('click', function () {
+      console.log(this);
+      parNomi.innerHTML = this.value;
+    });
+  });
+}
+
+/*
 function assegnaPosto(prenotazione, fila, posto) {
   //assegna il valore al tasto/i e lo/li salva in platea
   try {
