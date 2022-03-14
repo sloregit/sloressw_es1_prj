@@ -68,12 +68,11 @@ function addBtn(fila) {
   });
 }
 function Mostra() {
-  console.log(this.value);
   parNomi.innerHTML = this.value;
 }
 
-teatro.assegnaPosto('Dylan', 1, 1);
-teatro.assegnaPosto('Wells', 4, 100);
+teatro.assegnaPosto('platea', 'Dylan', 1, 1);
+teatro.assegnaPosto('Wells', 4, 100); //errore
 teatro.palco[0][4] = 'Wells'; //funziona anche senza assegnaposto
 teatro.assegnaPosto('palco', 'Igor', 1, 3);
 teatro.assegnaPosto('platea', 'Morgana', 9, 6);
