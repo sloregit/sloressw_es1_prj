@@ -21,7 +21,7 @@ const teatro = {
   palco: Array(filePalco)
     .fill('palco')
     .map(() => Array(postiPalco).fill('postoPalco')),
-  creaPlatea: function (spazio) {
+  creaPlatea: function () {
     return this.platea.map(addBtn, 'platea');
   },
   creaPalco: function () {
@@ -34,13 +34,13 @@ const teatro = {
       if (posizione === 'platea') {
         if (fila > filePlatea) throw 'fila inesistente';
         if (posto > postiPlatea) throw 'posto inesistente';
-        this.platea[fila][posto] = nome;
+        return (this.platea[fila][posto] = nome);
         // this.platea[fila][posto].className = 'prenotato';
       }
       if (posizione === 'palco') {
         if (fila > filePalco) throw 'fila inesistente';
         if (posto > postiPalco) throw 'posto inesistente';
-        this.palco[fila][posto] = nome;
+        return (this.palco[fila][posto] = nome);
         //  this.palco[fila][posto].className = 'prenotato';
       }
     } catch (err) {
@@ -48,12 +48,14 @@ const teatro = {
     }
   },
 };
-
+teatro.palco[0][3] = 'ciao';
 teatro.assegnaPosto('palco', 'Igor', 0, 3);
+console.log(teatro.palco);
 teatro.assegnaPosto('platea', 'Morgana', 0, 6);
+console.log(teatro.platea);
 teatro.creaPlatea();
 teatro.creaPalco();
-console.log(teatro.platea);
+
 //inserisce i pulsanti in platea o palco
 function addBtn(fila) {
   fila.map((nome, posto) => {
@@ -73,13 +75,18 @@ function addBtn(fila) {
       posto + 1 >= fila.length ? parPalchi.appendChild(aCapo) : '';
     }
     showNome.value = nome != undefined ? nome : ''; // x sicurezza
-    showNome.addEventListener('click', function () {
-      parNomi.innerHTML = this.value;
-    });
+    showNome.addEventListener('click', Mostra); //() {
+    //console.log(this.value);
+    //parNomi.innerHTML = this.value;
+    //});
     return showNome;
   });
 }
 
+function Mostra() {
+  console.log(this.value);
+  parNomi.innerHTML = this.value;
+}
 /*
 
 vecchio codice 
