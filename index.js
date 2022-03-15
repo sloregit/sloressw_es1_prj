@@ -1,47 +1,57 @@
 import './style.css';
+
 //step 6
 const parPosti = document.getElementById('parPosti');
 const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('palchi');
 
 //dichiarazione numero di file,posti platea/palco
-const filePlatea = 10;
+/*const filePlatea = 10;
 const postiPlatea = 10;
 const filePalco = 4;
 const postiPalco = 6;
-
-const teatro = {
-  platea: Array(filePlatea)
-    .fill('platea')
-    .map(() => Array(postiPlatea).fill('x')),
-  palco: Array(filePalco)
-    .fill('palco')
-    .map(() => Array(postiPalco).fill('x')),
-  creaPlatea: function () {
-    return this.platea.map(addBtn, 'platea');
-  },
-  creaPalco: function () {
-    return this.palco.map(addBtn, 'palco');
-  },
-  assegnaPosto: function (posizione, nome, fila, posto) {
+*/
+//new teatro(["platea",6,10],["palchi",4,6])
+class teatro {
+  constructor(elem1, elem2) {
+    this.filePlatea = elem1[1];
+    this.postiPlatea = elem1[2];
+    this.posizione1 = elem1[0];
+    this.filePalco = elem2[1];
+    this.postiPalco = elem2[2];
+    this.posizione2 = elem2[0];
+    this.platea = Array(this.filePlatea)
+      .fill(this.posizione1)
+      .map(() => Array(this.postiPlatea).fill('x'))
+      .map(addBtn, this.posizione1);
+    this.palco = Array(this.filePalco)
+      .fill(this.posizione2)
+      .map(() => Array(this.postiPalco).fill('x'))
+      .map(addBtn, this.posizione2);
+  }
+  assegnaPosto(posizione, nome, fila, posto) {
     try {
-      if (posizione !== 'platea' && posizione !== 'palco')
-        throw ' "platea" o "palco"';
-      if (posizione === 'platea') {
-        if (fila > filePlatea || fila < 1) throw 'fila inesistente';
-        if (posto > postiPlatea || posto < 1) throw 'posto inesistente';
-        return (this.platea[fila - 1][posto - 1] = nome);
+      if (posizione !== this.posizione1) throw ' "platea" o "palco"';
+      if (posizione === this.posizione1) {
+        if (fila > this.filePlatea || fila < 1) throw 'fila inesistente';
+        if (posto > this.postiPlatea || posto < 1) throw 'posto inesistente';
+        console.log(this.platea);
+        return (this.platea[this.filePlatea - 1][this.postiPlatea - 1] = nome);
       }
-      if (posizione === 'palco') {
-        if (fila > filePalco || fila < 1) throw 'fila inesistente';
-        if (posto > postiPalco || posto < 1) throw 'posto inesistente';
-        return (this.palco[fila - 1][posto - 1] = nome);
+      if (posizione2 === 'palco') {
+        if (fila > this.filePalco || fila < 1) throw 'fila inesistente';
+        if (posto > this.postiPalco || posto < 1) throw 'posto inesistente';
+        return (this.palco[filePalco - 1][postiPalco - 1] = nome);
       }
     } catch (err) {
       console.log('Errore: ' + err);
     }
-  },
-};
+  }
+}
+
+let a = new teatro(['platea', 2, 2], ['palco', 2, 2]);
+a.assegnaPosto('platea', 'Simone', 1, 1);
+console.log(a);
 
 //crea i pulsanti
 function addBtn(fila) {
@@ -61,7 +71,9 @@ function addBtn(fila) {
       showNome.className = 'postiPalco';
       posto + 1 >= fila.length ? parPalchi.appendChild(aCapo) : '';
     }
+
     showNome.value = nome != undefined ? nome : ''; // x sicurezza
+
     showNome.className = nome != 'x' ? 'prenotato' : 'libero';
     showNome.addEventListener('click', Mostra);
     return showNome;
@@ -70,7 +82,7 @@ function addBtn(fila) {
 function Mostra() {
   parNomi.innerHTML = this.value;
 }
-
+/*
 teatro.assegnaPosto('platea', 'Dylan', 1, 1);
 teatro.assegnaPosto('Wells', 4, 100); //errore
 teatro.palco[0][4] = 'Wells'; //funziona anche senza assegnaposto
