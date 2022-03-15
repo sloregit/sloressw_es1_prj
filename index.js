@@ -24,6 +24,7 @@ class teatro {
       .fill(this.posizione1)
       .map(() => Array(this.postiPlatea).fill('x'))
       .map(addBtn, this.posizione1);
+    console.log(this.platea);
     this.palco = Array(this.filePalco)
       .fill(this.posizione2)
       .map(() => Array(this.postiPalco).fill('x'))
@@ -35,7 +36,6 @@ class teatro {
       if (posizione === this.posizione1) {
         if (fila > this.filePlatea || fila < 1) throw 'fila inesistente';
         if (posto > this.postiPlatea || posto < 1) throw 'posto inesistente';
-        console.log(this.platea);
         return (this.platea[this.filePlatea - 1][this.postiPlatea - 1] = nome);
       }
       if (posizione2 === 'palco') {
@@ -49,9 +49,8 @@ class teatro {
   }
 }
 
-let a = new teatro(['platea', 2, 2], ['palco', 2, 2]);
+let a = new teatro(['platea', 5, 5], ['palco', 2, 2]);
 a.assegnaPosto('platea', 'Simone', 1, 1);
-console.log(a);
 
 //crea i pulsanti
 function addBtn(fila) {
