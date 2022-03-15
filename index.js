@@ -24,11 +24,15 @@ class teatro {
       .fill(this.posizione1)
       .map(() => Array(this.postiPlatea).fill('x'))
       .map(addBtn, this.posizione1);
-    console.log(this.platea);
+
     this.palco = Array(this.filePalco)
       .fill(this.posizione2)
       .map(() => Array(this.postiPalco).fill('x'))
       .map(addBtn, this.posizione2);
+  }
+  prenota(posizione, nome, fila, posto) {
+    console.log(this.platea);
+    return (this.platea[fila][posto] = nome);
   }
   assegnaPosto(posizione, nome, fila, posto) {
     try {
@@ -50,7 +54,8 @@ class teatro {
 }
 
 let a = new teatro(['platea', 5, 5], ['palco', 2, 2]);
-a.assegnaPosto('platea', 'Simone', 1, 1);
+
+a.prenota('platea', 'Simone', 1, 1);
 
 //crea i pulsanti
 function addBtn(fila) {
