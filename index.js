@@ -1,11 +1,10 @@
 import './style.css';
 
-//step 6
+//step 7
 const parPlatea = document.getElementById('parPlatea');
 const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('parPalchi');
-//nome,fila,posto
-//new teatro(["platea",6,10],["palchi",4,6])
+
 class teatro {
   buttonPosto = document.createElement('button');
   aCapo = document.createElement('br');
@@ -23,7 +22,7 @@ class teatro {
           Array(this.postiPlatea)
             .fill('x')
             .map((val, posto) => {
-              return foo(val, this.postiPlatea, posto, this.zona1);
+              return addBtn(val, this.postiPlatea, posto, this.zona1);
             })
         ),
       palco: Array(this.filePalco)
@@ -32,7 +31,7 @@ class teatro {
           Array(this.postiPalco)
             .fill('x')
             .map((val, posto) => {
-              return foo(val, this.postiPalco, posto, this.zona2);
+              return addBtn(val, this.postiPalco, posto, this.zona2);
             })
         ),
     };
@@ -49,7 +48,7 @@ class teatro {
   }
 }
 
-function foo(nome, LFila, posto, zona) {
+function addBtn(nome, LFila, posto, zona) {
   let showNome = document.createElement('button');
   showNome.className = 'posto';
   let aCapo = document.createElement('br');
@@ -65,7 +64,6 @@ function foo(nome, LFila, posto, zona) {
     showNome.className = 'postiPalco';
     posto + 1 >= LFila ? parPalchi.appendChild(aCapo) : '';
   }
-
   showNome.value = nome != undefined ? nome : ''; // x sicurezza
   showNome.className = nome != 'x' ? 'prenotato' : 'libero';
   showNome.addEventListener('click', Mostra);
@@ -75,6 +73,7 @@ function foo(nome, LFila, posto, zona) {
 function Mostra() {
   parNomi.innerHTML = this.value;
 }
-let a = new teatro(['platea', 10, 10], ['palco', 4, 6]);
+
+const a = new teatro(['platea', 10, 10], ['palco', 4, 6]);
 a.assegnaPosto('platea', 'Dylan', 2, 3);
 a.assegnaPosto('palco', 'Bloch', 1, 5);
