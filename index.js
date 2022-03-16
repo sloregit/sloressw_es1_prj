@@ -4,6 +4,7 @@ import './style.css';
 const parPlatea = document.getElementById('parPlatea');
 const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('parPalchi');
+const prenotazione = document.getElementById('prenotazione');
 
 class teatro {
   buttonPosto = document.createElement('button');
@@ -71,6 +72,11 @@ function addBtn(nome, LFila, posto, zona) {
 }
 
 function Mostra() {
+  if (prenotazione.value) {
+    this.value = prenotazione.value;
+    this.style.backgroundColor = 'red';
+    prenotazione.value = '';
+  }
   parNomi.innerHTML = this.value;
 }
 
