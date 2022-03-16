@@ -1,6 +1,6 @@
 import './style.css';
 
-//step 7
+//step 8
 const parPlatea = document.getElementById('parPlatea');
 const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('parPalchi');
