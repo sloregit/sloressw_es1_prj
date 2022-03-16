@@ -35,6 +35,7 @@ class teatro {
             })
         ),
     };
+    //possibilità di aggiungere prenotazioni da input esterno
     this.assegnaPosto = function (zona, nome, fila, posto) {
       if (zona === 'platea') {
         this.teatro.platea[fila - 1][posto - 1].style.backgroundColor = 'red';
@@ -45,6 +46,7 @@ class teatro {
         return (this.teatro.palco[fila - 1][posto - 1].value = nome);
       }
     };
+    //inserisce i valori dei pulsanti, posto.value in un array
     this.toArray = function () {
       return (this.prenotazioni = [
         this.teatro.platea.map((fila) => fila.map((posto) => posto.value)),
@@ -53,7 +55,7 @@ class teatro {
     };
   }
 }
-
+//aggiunge i pulsanti: posto
 function addBtn(nome, LFila, posto, zona) {
   let showNome = document.createElement('button');
   showNome.className = 'posto';
@@ -62,7 +64,6 @@ function addBtn(nome, LFila, posto, zona) {
   if (zona === 'platea') {
     parPlatea.appendChild(showNome);
     showNome.className = 'postiPlatea';
-    //superata la lunghezza della fila, a capo
     posto + 1 >= LFila ? parPlatea.appendChild(aCapo) : '';
   }
   if (zona === 'palco') {
@@ -75,7 +76,7 @@ function addBtn(nome, LFila, posto, zona) {
   showNome.addEventListener('click', mostraNome);
   return showNome;
 }
-
+//mostra il nome relativo alla prenotazione, posto.value
 function mostraNome() {
   if (prenotazione.value) {
     this.value = prenotazione.value;
@@ -84,12 +85,12 @@ function mostraNome() {
   }
   parNomi.innerHTML = this.value;
 }
-
+//mostra il log completo delle prenotazioni
 function vediPrenotazioni() {
   console.log(a.toArray());
 }
 
 const a = new teatro(['platea', 10, 10], ['palco', 4, 6]);
-a.assegnaPosto('platea', 'Dylan', 2, 3);
+a.assegnaPosto('platea', 'Dylan', 2, 3); //aggiunta da input esterno
 a.assegnaPosto('palco', 'Bloch', 1, 5);
 buttonPrenotazioni.addEventListener('click', vediPrenotazioni);
