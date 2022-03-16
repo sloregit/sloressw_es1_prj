@@ -1,56 +1,80 @@
 import './style.css';
 
 //step 6
-const parPlatea = document.getElementById('parPosti');
+const parPlatea = document.getElementById('parPlatea');
 const parNomi = document.getElementById('parNomi');
-const parPalchi = document.getElementById('palchi');
-
+const parPalchi = document.getElementById('parPalchi');
+//nome,fila,posto
 //new teatro(["platea",6,10],["palchi",4,6])
 class teatro {
   buttonPosto = document.createElement('button');
   aCapo = document.createElement('br');
   constructor(elem1, elem2) {
-    this.platea = {
-      elem1: Array(elem1[1])
+    this.zona1 = elem1[0];
+    this.filePlatea = elem1[1];
+    this.postiPlatea = elem1[2];
+    this.zona2 = elem2[0];
+    this.filePalco = elem2[1];
+    this.postiPalco = elem2[2];
+    this.teatro = {
+      platea: Array(this.filePlatea)
         .fill('filaPlatea')
-        .map((val, fila) =>
-          Array(elem1[2])
-            .fill('postoPlatea')
+        .map(() =>
+          Array(this.postiPlatea)
+            .fill('x')
             .map((val, posto) => {
-              'ew';
+              return foo(val, this.postiPlatea, posto, this.zona1);
+            })
+        ),
+      palco: Array(this.filePalco)
+        .fill('filaPlatea')
+        .map(() =>
+          Array(this.postiPalco)
+            .fill('x')
+            .map((val, posto) => {
+              return foo(val, this.postiPalco, posto, this.zona2);
             })
         ),
     };
-    this.palco = {
-      elem2: Array(elem2[1])
-        .fill('filaPlatea')
-        .map(() => Array(elem2[2]).fill('postoPalco')),
+    this.assegnaPosto = function (zona, nome, fila, posto) {
+      if (zona === 'platea') {
+        this.teatro.platea[fila - 1][posto - 1].style.backgroundColor = 'red';
+        return (this.teatro.platea[fila - 1][posto - 1].value = nome);
+      }
+      if (zona === 'palco') {
+        this.teatro.palco[fila - 1][posto - 1].style.backgroundColor = 'red';
+        return (this.teatro.palco[fila - 1][posto - 1].value = nome);
+      }
     };
   }
 }
 
-function foo() {
+function foo(nome, LFila, posto, zona) {
   let showNome = document.createElement('button');
   showNome.className = 'posto';
   let aCapo = document.createElement('br');
   showNome.innerHTML = 'P' + (posto + 1);
-  if (this === 'platea') {
-    parPosti.appendChild(showNome);
+  if (zona === 'platea') {
+    parPlatea.appendChild(showNome);
     showNome.className = 'postiPlatea';
     //superata la lunghezza della fila, a capo
-    posto + 1 >= fila.length ? parPosti.appendChild(aCapo) : '';
+    posto + 1 >= LFila ? parPlatea.appendChild(aCapo) : '';
   }
-  if (this === 'palco') {
+  if (zona === 'palco') {
     parPalchi.appendChild(showNome);
     showNome.className = 'postiPalco';
-    posto + 1 >= fila.length ? parPalchi.appendChild(aCapo) : '';
+    posto + 1 >= LFila ? parPalchi.appendChild(aCapo) : '';
   }
 
   showNome.value = nome != undefined ? nome : ''; // x sicurezza
-
   showNome.className = nome != 'x' ? 'prenotato' : 'libero';
   showNome.addEventListener('click', Mostra);
   return showNome;
 }
-let a = new teatro(['platea', 5, 3], ['palco', 6, 8]);
-console.log(a);
+
+function Mostra() {
+  parNomi.innerHTML = this.value;
+}
+let a = new teatro(['platea', 10, 10], ['palco', 4, 6]);
+a.assegnaPosto('platea', 'Dylan', 2, 3);
+a.assegnaPosto('palco', 'Bloch', 1, 5);
