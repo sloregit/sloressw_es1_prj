@@ -1,17 +1,14 @@
 import './style.css';
 
-//step 7
+//step 9
 const parPlatea = document.getElementById('parPlatea');
 const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('parPalchi');
-const prenotazione = document.getElementById('prenotazione');
-const log = document.getElementById('log');
-log.addEventListener('click', vediPrenotazioni);
+const buttonPrenotazioni = document.getElementById('log');
 
 class teatro {
-  buttonPosto = document.createElement('button');
-  aCapo = document.createElement('br');
   constructor(elem1, elem2) {
+    this.prenotazioni = [];
     this.zona1 = elem1[0];
     this.filePlatea = elem1[1];
     this.postiPlatea = elem1[2];
@@ -48,6 +45,12 @@ class teatro {
         return (this.teatro.palco[fila - 1][posto - 1].value = nome);
       }
     };
+    this.toArray = function () {
+      return (this.prenotazioni = [
+        this.teatro.platea.map((fila) => fila.map((posto) => posto.value)),
+        this.teatro.palco.map((fila) => fila.map((posto) => posto.value)),
+      ]);
+    };
   }
 }
 
@@ -69,11 +72,11 @@ function addBtn(nome, LFila, posto, zona) {
   }
   showNome.value = nome != undefined ? nome : ''; // x sicurezza
   showNome.className = nome != 'x' ? 'prenotato' : 'libero';
-  showNome.addEventListener('click', Mostra);
+  showNome.addEventListener('click', mostraNome);
   return showNome;
 }
 
-function Mostra() {
+function mostraNome() {
   if (prenotazione.value) {
     this.value = prenotazione.value;
     this.style.backgroundColor = 'red';
@@ -81,9 +84,12 @@ function Mostra() {
   }
   parNomi.innerHTML = this.value;
 }
+
 function vediPrenotazioni() {
-  console.log(a.teatro.platea);
+  console.log(a.toArray());
 }
+
 const a = new teatro(['platea', 10, 10], ['palco', 4, 6]);
 a.assegnaPosto('platea', 'Dylan', 2, 3);
 a.assegnaPosto('palco', 'Bloch', 1, 5);
+buttonPrenotazioni.addEventListener('click', vediPrenotazioni);
