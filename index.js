@@ -5,6 +5,8 @@ const parPlatea = document.getElementById('parPlatea');
 const parNomi = document.getElementById('parNomi');
 const parPalchi = document.getElementById('parPalchi');
 const prenotazione = document.getElementById('prenotazione');
+const log = document.getElementById('log');
+log.addEventListener('click', vediPrenotazioni);
 
 class teatro {
   buttonPosto = document.createElement('button');
@@ -79,7 +81,9 @@ function Mostra() {
   }
   parNomi.innerHTML = this.value;
 }
-
+function vediPrenotazioni() {
+  console.log(a.teatro.platea);
+}
 const a = new teatro(['platea', 10, 10], ['palco', 4, 6]);
 a.assegnaPosto('platea', 'Dylan', 2, 3);
 a.assegnaPosto('palco', 'Bloch', 1, 5);
