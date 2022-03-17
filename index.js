@@ -1,12 +1,12 @@
 import './style.css';
 
 //step 9
-const parPlatea = document.getElementById('parPlatea');
-const parNomi = document.getElementById('parNomi');
-const parPalchi = document.getElementById('parPalchi');
-const buttonPrenotazioni = document.getElementById('log');
 
 class teatro {
+  buttonPrenotazioni = document.createElement('button');
+  parPlatea = document.getElementById('parPlatea');
+  parPalchi = document.getElementById('parPalchi');
+  parNomi = document.getElementById('parNomi');
   constructor(elem1, elem2) {
     this.prenotazioni = [];
     this.zona1 = elem1[0];
@@ -93,4 +93,4 @@ function vediPrenotazioni() {
 const a = new teatro(['platea', 10, 10], ['palco', 4, 6]);
 a.assegnaPosto('platea', 'Dylan', 2, 3); //aggiunta da input esterno
 a.assegnaPosto('palco', 'Bloch', 1, 5);
-buttonPrenotazioni.addEventListener('click', vediPrenotazioni);
+a.buttonPrenotazioni.addEventListener('click', vediPrenotazioni);
