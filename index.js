@@ -3,7 +3,7 @@ import './style.css';
 //step 9
 
 class teatro {
-  buttonPrenotazioni = document.createElement('button');
+  buttonLog = document.getElementById('log');
   parPlatea = document.getElementById('parPlatea');
   parPalchi = document.getElementById('parPalchi');
   parNomi = document.getElementById('parNomi');
@@ -93,4 +93,4 @@ function vediPrenotazioni() {
 const a = new teatro(['platea', 10, 10], ['palco', 4, 6]);
 a.assegnaPosto('platea', 'Dylan', 2, 3); //aggiunta da input esterno
 a.assegnaPosto('palco', 'Bloch', 1, 5);
-a.buttonPrenotazioni.addEventListener('click', vediPrenotazioni);
+a.buttonLog.addEventListener('click', vediPrenotazioni);
