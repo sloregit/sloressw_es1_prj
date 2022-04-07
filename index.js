@@ -78,10 +78,16 @@ function addBtn(nome, LFila, posto, zona) {
 }
 //mostra il nome relativo alla prenotazione, posto.value
 function mostraNome() {
+  //se c'è un nome nel campo inserimento
   if (prenotazione.value) {
-    this.value = prenotazione.value;
-    this.style.backgroundColor = 'red';
-    prenotazione.value = '';
+    //se il posto è libero
+    if (this.value == 'x') {
+      this.value = prenotazione.value;
+      this.style.backgroundColor = 'red';
+      prenotazione.value = '';
+    } else if (this.value != 'x') {
+      alert('il posto è già prenotato');
+    }
   }
   parNomi.innerHTML = this.value;
 }
